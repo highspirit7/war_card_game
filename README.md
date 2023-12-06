@@ -49,3 +49,6 @@ Game progress(e.g. the number of cards left for user and computer, which cards a
 ### 2.4 End of Game
 The game shall continue until user or computer wins all the cards.
 The program shall declare the winner when the game ends.
+
+## 3. Class Structure
+https://pourmavie.notion.site/Necessary-Classes-OOP-7399cfe8ed75483ca71e6b0820b60dcd?pvs=4
