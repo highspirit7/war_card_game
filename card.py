@@ -10,6 +10,9 @@ class Card:
             self._rank = rank
             self._suit = suit
 
+    def __str__(self):
+        return self.rank + self.suit
+
     @property
     def rank(self):
         return self._rank
