@@ -27,7 +27,7 @@ def compare_two_cards(
 ) -> Literal["user", "computer", "tie"]:
     if ranks.index(user_card.rank) > ranks.index(computer_card.rank):
         return "user"
-    elif ranks.index(user_card._rank) < ranks.index(computer_card._rank):
+    elif ranks.index(user_card.rank) < ranks.index(computer_card.rank):
         return "computer"
     else:
         return "tie"
@@ -52,7 +52,7 @@ def ascii_of_two_cards(user_card: Card, computer_card: Card) -> None:
     lines = []
     lines.append("┌─────────┐" + "    " + "┌─────────┐")
     lines.append(
-        line_with_rank(user_card, "top") + "    " + line_with_rank(user_card, "top")
+        line_with_rank(user_card, "top") + "    " + line_with_rank(computer_card, "top")
     )
     lines.append("│         │" + "    " + "│         │")
     lines.append("│         │" + "    " + "│         │")
@@ -66,7 +66,7 @@ def ascii_of_two_cards(user_card: Card, computer_card: Card) -> None:
     lines.append(
         line_with_rank(user_card, "bottom")
         + "    "
-        + line_with_rank(user_card, "bottom")
+        + line_with_rank(computer_card, "bottom")
     )
     lines.append("└─────────┘" + "    " + "└─────────┘")
 
