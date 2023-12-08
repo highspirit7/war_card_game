@@ -9,19 +9,14 @@ suits = ["♥️", "♦️", "♣️", "♠️"]
 
 
 def main():
-    user_card = Card("10", "♠️")
-    computer_card = Card("10", "♣️")
-    user_war_cards = []
-    computer_war_cards = []
-
-    for _ in range(4):
-        user_war_cards.append(Card(random.choice(ranks), random.choice(suits)))
-
-    for _ in range(4):
-        computer_war_cards.append(Card(random.choice(ranks), random.choice(suits)))
-
-    # ascii_of_two_cards(user_card, computer_card)
-    # ascii_of_cards_for_war(user_war_cards, computer_war_cards)
+    game = WarGame()
+    game.print_guide_before_start()
+    game.ask_user_to_play()
+    deck = Deck()
+    player_user_deck, player_computer_deck = deck.split_to_two_piles()
+    player_user = Player(type="user", player_user_deck)
+    computer_user = Player(type="computer", computer_computer_deck)
+    ...
 
 
 if __name__ == "__main__":

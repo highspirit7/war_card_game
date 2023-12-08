@@ -46,8 +46,8 @@ class WarGame:
             )
         else:
             user_input = input("Do you want to start war game?(yes/no): ")
-
-        return user_input.lower()[0]
+        if user_input.lower()[0] == "n":
+            self.exit_war_game()
 
     def announce_winner_of_round(
         player: Literal["user", "computer"], round: int
@@ -108,3 +108,5 @@ class WarGame:
 
     """
         )
+
+    
