@@ -23,8 +23,6 @@ class Player:
 
     @card_pile.setter
     def card_pile(self, cards: List[Card]):
-        if len(cards) != 26:
-            raise
         self._card_pile = cards
 
     def flip_top_card(self) -> Card:
@@ -34,7 +32,7 @@ class Player:
         return self.card_pile[-4:]
 
     def win_cards(self, cards):
-        self.card_pile.extend(cards)
+        self.card_pile = cards + self.card_pile
 
 
 def show_cards_of_players(user: Player, computer: Player) -> None:
