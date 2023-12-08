@@ -35,3 +35,10 @@ class Player:
 
     def win_cards(self, cards):
         self.card_pile.extend(cards)
+
+
+def show_cards_of_players(user: Player, computer: Player) -> None:
+    print(
+        f"\n====== Currently the number of your cards is {len(user.card_pile)} // {computer.type} has {len(computer.card_pile)} ======"
+        + "\n"
+    )
