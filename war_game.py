@@ -1,7 +1,5 @@
 from typing import Literal, Union
-import sys
-from player import Player
-from deck import Deck
+import sys, time
 from utils import convert_to_ordinal
 
 
@@ -65,15 +63,18 @@ class WarGame:
             + f"{round} rounds were held in total. and {winner} has won this war game!!"
         )
 
-    def get_winner_of_game(
-        user_cards, computer_cards
-    ) -> Union[Literal["user", "computer"], None]:
-        if not len(user_cards):
-            return "computer"
-        elif not len(computer_cards):
-            return "user"
+    def announce_war(self, winner: Union[Literal["user", "computer"], None]):
+        print()
+        if winner == None:
+            for i in [".", ".", ".", " going to War!!!\n"]:
+                sys.stdout.write(str(i) + " ")
+                sys.stdout.flush()
+                time.sleep(0.5)
         else:
-            return
+            loser = "user" if winner == "computer" else "computer"
+            print(
+                f"{loser} does not have enough cards for war. So, war can't go on in this case."
+            )
 
     def exit_war_game(self) -> None:
         sys.exit(
@@ -99,3 +100,14 @@ computer's card will be located on the right side on the table.
 
     """
         )
+
+
+def get_winner_of_game(
+    user_cards, computer_cards
+) -> Union[Literal["user", "computer"], None]:
+    if not len(user_cards):
+        return "computer"
+    elif not len(computer_cards):
+        return "user"
+    else:
+        return
