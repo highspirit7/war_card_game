@@ -1,6 +1,6 @@
 from typing import Literal, List
 from card import Card
-
+import random
 
 class Player:
     def __init__(self, type: Literal["user", "computer"], cards: List[Card]):
@@ -28,10 +28,14 @@ class Player:
     def flip_top_card(self) -> Card:
         return self.card_pile.pop()
 
-    def cards_for_war(self) -> List[Card]:
-        return self.card_pile[-4:]
+    def flip_cards_for_war(self) -> List[Card]:
+        cards_for_war = []
+        for _ in range(4):
+            cards_for_war.append(self.card_pile.pop())
+        return cards_for_war
 
     def win_cards(self, cards):
+        random.shuffle(cards)
         self.card_pile = cards + self.card_pile
 
 
