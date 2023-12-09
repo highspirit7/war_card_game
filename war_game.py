@@ -1,6 +1,8 @@
-from typing import Literal, Union
+from typing import Literal, Union, List
+from card import Card
 import sys, time
 from utils import convert_to_ordinal
+from constants import styles, colors
 
 
 class WarGame:
@@ -50,35 +52,36 @@ class WarGame:
     def announce_winner_of_round(self, player: Literal["user", "computer"]) -> None:
         winner = "You" if player == "user" else "Computer"
         print(
-            f"{winner} has won in the {convert_to_ordinal(self.round)} round. So {winner} takes all the card on the table."
+            f"{winner} has won in the {convert_to_ordinal(self.round)} round. So {winner.lower()} takes all the card on the table."
             + "\n"
         )
 
     def announce_winner_of_game(
-        player: Literal["user", "computer"], round: int
+        self, result: Literal["user", "computer", "tie"]
     ) -> None:
-        winner = "You" if player == "user" else "Computer"
-        print(
-            "\n"
-            + f"{round} rounds were held in total. and {winner} has won this war game!!"
-        )
-
-    def announce_war(self, winner: Union[Literal["user", "computer"], None]):
-        print()
-        if winner == None:
-            for i in [".", ".", ".", " going to War!!!\n"]:
-                sys.stdout.write(str(i) + " ")
-                sys.stdout.flush()
-                time.sleep(0.5)
-        else:
-            loser = "user" if winner == "computer" else "computer"
+        if result != "tie":
+            winner = "You" if result == "user" else "Computer"
             print(
-                f"{loser} does not have enough cards for war. So, war can't go on in this case."
+                "\n"
+                + f"{styles['bold']}{self.round} rounds were held in total. and {winner} has won this war game!!{styles['reset']}"
             )
+        else:
+            print(
+                "\n"
+                + f"{styles['bold']}Both of players do not have enough cards for war!!! This game ends in a tie...{styles['reset']}"
+            )
+
+    def announce_war(self) -> None:
+        print()
+
+        for i in [".", ".", ".", " going to War!!!"]:
+            sys.stdout.write(str(i) + " ")
+            sys.stdout.flush()
+            time.sleep(0.5)
 
     def exit_war_game(self) -> None:
         sys.exit(
-            """
+            f"""{colors['green']}
   _____                   ____                 
  / ___/___ _ __ _  ___   / __ \ _  __ ___  ____
 / (_ // _ `//  ' \/ -_) / /_/ /| |/ // -_)/ __/
@@ -100,6 +103,25 @@ computer's card will be located on the right side on the table.
 
     """
         )
+
+
+def check_cards_before_war(
+    user_cards: List[Card], computer_cards: List[Card]
+) -> Literal["tie", "user", "computer", "continue"]:
+    if len(user_cards) < 4 and len(computer_cards) < 4:
+        return "tie"
+    if len(user_cards) < 4:
+        print(
+            f"{colors['red']}\n!!!User does not have enough cards for war!!!{colors['end']}"
+        )
+        return "computer"
+    if len(computer_cards) < 4:
+        print(
+            f"{colors['red']}\n!!!Computer does not have enough cards for war!!!{colors['end']}"
+        )
+        return "user"
+
+    return "continue"
 
 
 def get_winner_of_game(
