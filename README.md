@@ -11,11 +11,11 @@ This game uses one standard deck of playing cards.(the version of this war game 
 
 First, all the cards are evenly dealt between the players. So every player has the same number of cards.
 
-Each player keeps their cards face down in a pile in front of them. Then all players flip the top cards on their pile face up on the table at the same time.
+Each player keeps their cards face down in a pile in front of them. Then all players flip the top cards on their pile face up on the table at the same time.(Let's call this play as 'battle')
 
 The player who has the highest card wins all of the cards on the table and places them face down at the bottom of their pile.(Before placing cards at the bottom of a pile, they should be shuffled.)
 
-But, two or more players flip a card in the same rank, they go to ‘war’. 
+But, two or more players flip a card in the same rank in the battle, they go to ‘war’. 
 
 At the ‘war’, each player in the war places the top 3 card face down on the table and flip 4th card and place it face up on the table as well.
 
