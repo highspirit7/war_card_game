@@ -1,6 +1,8 @@
 from typing import Literal, List
 from card import Card
 import random
+from constants import colors
+
 
 class Player:
     def __init__(self, type: Literal["user", "computer"], cards: List[Card]):
@@ -41,6 +43,6 @@ class Player:
 
 def show_cards_of_players(user: Player, computer: Player) -> None:
     print(
-        f"\n====== Currently the number of your cards is {len(user.card_pile)} // {computer.type} has {len(computer.card_pile)} ======"
+        f"{colors['yellow']}\n====== Currently the number of your cards is {len(user.card_pile)} // {computer.type} has {len(computer.card_pile)} ======{colors['end']}"
         + "\n"
     )
