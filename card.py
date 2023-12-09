@@ -1,7 +1,5 @@
 from typing import Literal, List
-
-ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
-suits = ["♥️", "♦️", "♣️", "♠️"]
+from constants import ranks, suits
 
 
 class Card:
