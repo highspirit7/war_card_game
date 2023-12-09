@@ -6,6 +6,7 @@ from card import Card
 class Table:
     def __init__(self, user_cards: List[Card], computer_cards: List[Card]):
         self.war_count = 0
+        self.is_war_over = False
         self.user_cards = user_cards
         self.computer_cards = computer_cards
         self.cards = user_cards + computer_cards
@@ -34,23 +35,18 @@ class Table:
     def computer_cards(self, new_cards):
         self._computer_cards = new_cards
 
-    def top_table_of_battle(self, round_num):
+    def top_table_of_battle(self, round_num: int):
         ordinal_round_number = convert_to_ordinal(round_num)
         print(
             f"======================== Battle in {ordinal_round_number} round ========================"
         )
 
-    def announce_war(self):
-        pass
+    def top_table_of_war(self, round_num: int):
+        ordinal_round_number = convert_to_ordinal(round_num)
+        ordinal_war_count = convert_to_ordinal(self.war_count)
+        print(
+            f"======================== {ordinal_war_count } war in {ordinal_round_number} round ========================"
+        )
 
     def bottom_of_table(self):
         print("======================================================================")
-
-    # def vizualize_table(self):
-    #     if war:
-    #         self.announce_war()
-    #     else:
-    #         self.top_table_of_battle()
-    #     self.bottom_of_table()
-    #     ...
-    #     self.bottom_of_table()
