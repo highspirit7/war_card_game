@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Literal
 from utils import convert_to_ordinal
 from card import Card
 
@@ -44,9 +44,17 @@ class Table:
     def top_table_of_war(self, round_num: int):
         ordinal_round_number = convert_to_ordinal(round_num)
         ordinal_war_count = convert_to_ordinal(self.war_count)
+        print("\n")
         print(
-            f"======================== {ordinal_war_count } war in {ordinal_round_number} round ========================"
+            f"======================================= {ordinal_war_count} war in {ordinal_round_number} round ======================================="
         )
 
-    def bottom_of_table(self):
-        print("======================================================================")
+    def bottom_of_table(self, type: Literal["battle", "war"]):
+        if type == "battle":
+            print(
+                "====================================================================="
+            )
+        else:
+            print(
+                "===================================================================================================="
+            )
