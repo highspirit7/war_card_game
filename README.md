@@ -22,11 +22,10 @@ At the ‘war’, each player in the war places the top 3 card face down on the 
 Whoever has the highest face up card wins all of the cards on the table. 
 If there are face up cards in the same rank at the ‘war’, another ‘war’ would go on in the same manner until one player wins the war.
 
-If a player does not have enough cards for the war, the player loses the war and loses his(or her) cards on the table.
+If a player does not have enough cards for the war, the player loses the whole game.
+However if both of players(user, computer) do not have enough cards, then the game will end as a 'tie'.
 
-Once a player has no cards to play, then the player will be eliminated from this card game.
-
-This game continues until one player wins all of the cards in the deck.
+This game continues until one player wins all of the cards in the deck.(except the case that both of players do not have enough cards for war)
 
 ## 2. Requirements(or Implementation)
 ### 2.1 Game Initialization
