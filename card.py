@@ -126,3 +126,11 @@ def ascii_of_cards_for_war(user_cards: List[Card], computer_cards: List[Card]) -
     )
     for line in lines:
         print(line)
+
+
+# This functions is for testing, not for end-user.
+def print_cards(cards: List[Card], name: str) -> None:
+    print(name)
+    for card in cards:
+        print(card, end=" ")
+    print()
