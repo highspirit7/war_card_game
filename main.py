@@ -1,17 +1,24 @@
-from table import Table
+from table import Table, top_table_of_battle, bottom_of_table
 from card import (
     compare_two_cards,
     ascii_of_two_cards,
     ascii_of_cards_for_war,
 )
-from war_game import WarGame, get_winner_of_game, check_cards_before_war
+from war_game import (
+    WarGame,
+    get_winner_of_game,
+    check_cards_before_war,
+    announce_war,
+    exit_war_game,
+    print_guide_before_start,
+)
 from player import Player, show_cards_of_players
 from deck import Deck
 
 
 def main():
     game = WarGame()
-    game.print_guide_before_start()
+    print_guide_before_start()
     game.ask_user_to_play(game.round)
     deck = Deck()
     player_user_deck, player_computer_deck = deck.split_to_two_piles()
@@ -25,9 +32,9 @@ def main():
         computer_top_card = computer.flip_top_card()
 
         game_table = Table([user_top_card], [computer_top_card])
-        game_table.top_table_of_battle(game.round)
+        top_table_of_battle(game.round)
         ascii_of_two_cards(user_top_card, computer_top_card)
-        game_table.bottom_of_table("battle")
+        bottom_of_table("battle")
 
         battle_result = compare_two_cards(user_top_card, computer_top_card)
         war_result = None
@@ -39,7 +46,7 @@ def main():
 
                 if result != "continue":
                     game.announce_winner_of_game(result)
-                    game.exit_war_game()
+                    exit_war_game()
 
                 war_result = go_to_war(game, game_table, user, computer)
 
@@ -57,13 +64,13 @@ def main():
         winner = get_winner_of_game(user.card_pile, computer.card_pile)
         if winner != None:
             game.announce_winner_of_game(winner)
-            game.exit_war_game()
+            exit_war_game()
 
         game.ask_user_to_play(game.round)
 
 
 def go_to_war(game: WarGame, game_table: Table, user: Player, computer: Player):
-    game.announce_war()
+    announce_war()
     game_table.war_count += 1
     game_table.top_table_of_war(game.round)
 
@@ -74,7 +81,7 @@ def go_to_war(game: WarGame, game_table: Table, user: Player, computer: Player):
     game_table.computer_cards.extend(this_war_computer_cards)
 
     ascii_of_cards_for_war(this_war_user_cards, this_war_computer_cards)
-    game_table.bottom_of_table("war")
+    bottom_of_table("war")
 
     return compare_two_cards(game_table.user_cards[-1], game_table.computer_cards[-1])
 

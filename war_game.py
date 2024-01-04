@@ -71,28 +71,31 @@ class WarGame:
                 + f"{styles['bold']}Both of players do not have enough cards for war!!! This game ends in a tie...{styles['reset']}"
             )
 
-    def announce_war(self) -> None:
-        print()
 
-        for i in [".", ".", ".", " going to War!!!"]:
-            sys.stdout.write(str(i) + " ")
-            sys.stdout.flush()
-            time.sleep(0.5)
+def announce_war() -> None:
+    print()
 
-    def exit_war_game(self) -> None:
-        sys.exit(
-            f"""{colors['green']}
+    for i in [".", ".", ".", " going to War!!!"]:
+        sys.stdout.write(str(i) + " ")
+        sys.stdout.flush()
+        time.sleep(0.5)
+
+
+def exit_war_game() -> None:
+    sys.exit(
+        f"""{colors['green']}
   _____                   ____                 
  / ___/___ _ __ _  ___   / __ \ _  __ ___  ____
 / (_ // _ `//  ' \/ -_) / /_/ /| |/ // -_)/ __/
 \___/ \_,_//_/_/_/\__/  \____/ |___/ \__//_/   
                                                
 """
-        )
+    )
 
-    def print_guide_before_start(self) -> None:
-        print(
-            """
+
+def print_guide_before_start() -> None:
+    print(
+        """
 [PLAY GUIDE]
 War(card game) is a fun card game where players try to win all of the cards in the deck.
 This game uses one standard deck of playing cards.(the version of this war game does not use joker cards, 
@@ -102,7 +105,7 @@ Your card will be located on the left side and
 computer's card will be located on the right side on the table.
 
     """
-        )
+    )
 
 
 def check_cards_before_war(
